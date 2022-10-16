@@ -1,0 +1,227 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+
+  &-content {
+    width: 100%;
+
+    .title {
+      margin: 0 0 35px;
+      padding: 0;
+      font-size: 30px;
+      font-weight: bold;
+      font-family: Merriweather;
+      color: #111;
+    }
+
+    .text {
+      margin: 0 0 35px;
+    }
+  }
+
+  &-coverImage {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 350px;
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.07);
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+  .card {
+    flex-direction: column-reverse;
+
+    &-coverImage {
+      height: 100%;
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.07);
+    }
+
+    &-content {
+      width: 100%;
+
+      .title {
+        margin: 0 0 20px;
+        font-size: 24px;
+      }
+
+      .text {
+        margin: 0 0 30px;
+        font-size: 1em;
+      }
+    }
+  }
+}
+ 
+.card {
+  position: relative;
+  margin-bottom: 30px;
+
+  /* entire container, keeps perspective */
+  .flip-container {
+    margin: 0 auto;
+    perspective: 1000px;
+  }
+  /* flip the pane when hovered */
+  .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
+  .flip-container,
+  .front,
+  .back {
+    width: 100%;
+    max-width: 550px;
+    min-height: 200px;
+
+    @media only screen and (max-width: 640px) {
+      width: 100%;
+      height: 320px;
+    }
+  }
+
+  .flipper {
+    transition: 0.5s ease;
+    transform-style: preserve-3d;
+    position: relative;
+    transform: rotateZ(0);
+
+    will-change: transform;
+  }
+
+  .front,
+  .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: transform;
+  }
+
+  .front {
+    z-index: 2;
+    transform: rotateY(0deg);
+  }
+
+  .back {
+    transform: rotateY(180deg);
+  }
+
+  &-title {
+    margin: 0 0 25px;
+    padding: 0;
+    font-weight: bold;
+    font-size: 2.5em;
+    color: #5B4500;
+    line-height: 1.5;
+    text-align: center;
+
+    @media only screen and (max-width: 640px) {
+      font-size: 2em;
+      line-height: 1.25;
+    }
+  }
+
+  &-description {
+    max-width: 600px;
+    margin: 0 auto 25px;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #5B4500;
+    text-align: center;
+  }
+
+  &-download {
+    position: relative;
+    max-width: 550px;
+    margin: 0;
+    padding: 35px;
+    background-color: #fff;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,.07);
+    border-radius: 30px;
+    cursor: pointer;
+
+    button {
+      width: 100%;
+      max-width: 288px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 64px;
+      border: 1px solid #D40035;
+      box-sizing: border-box;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 29px;
+      background: #D40035;
+      color: #fff;
+      
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    &:hover {
+      .button {
+        background: #fff;
+        color: #D40035;
+      }
+    }
+  }
+
+  &-coverImage {
+    width: 100%;
+    height: 370px;
+    margin: 0 0 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    @media only screen and (max-width: 640px) {
+      height: 140px;
+    }
+  }
+
+  &-links {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+  }
+
+  &-close-btn {
+    position: absolute;
+    right: -25px;
+    top: -25px;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 100%;
+    cursor: pointer;
+    outline: none;
+    z-index: 2;
+  }
+}
+
+.article__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .addition__text {
+    padding: 10px;
+  }
+}

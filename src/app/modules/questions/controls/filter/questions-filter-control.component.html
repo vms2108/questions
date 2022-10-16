@@ -1,0 +1,11 @@
+
+<ng-container ikFormFieldControl>
+  <ik-select-control [formControl]="control">
+    <ik-option
+      *ngFor="let item of list"
+      [value]="item"
+    >
+      {{ item }}
+    </ik-option>
+  </ik-select-control>
+</ng-container>

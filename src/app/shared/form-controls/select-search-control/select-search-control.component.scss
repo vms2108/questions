@@ -1,0 +1,12 @@
+.field {
+  width: 220px;
+}
+
+::ng-deep .default-option .mat-pseudo-checkbox {
+  display: none !important;
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+::ng-deep .default-option.mat-option-disabled {
+  color: rgba(0, 0, 0, 0.87) !important;
+}

@@ -1,0 +1,13 @@
+<div>
+  <mat-select
+    [formControl]="control"
+    [placeholder]="placeholder"
+  >
+    <mat-option
+      *ngFor="let option of options"
+      [value]="option.value"
+    >
+      <ng-container [ngTemplateOutlet]="option.templateRef"></ng-container>
+    </mat-option>
+  </mat-select>
+</div>

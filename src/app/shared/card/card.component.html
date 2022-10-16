@@ -1,0 +1,30 @@
+<div class="card">
+  <article class="card-content">
+    
+    <div class="article__container">
+      <div class="flip-container" [class.hover]="backSide">
+        <div class="flipper">
+          <div class="front">
+            <div class="card-download" (click)="backSide = true">
+              <h2 class="title">
+                {{ item.title }}
+              </h2>
+            </div>
+          </div>
+          <div class="back">
+            <div class="card-links">
+              <p class="addition__text" [innerHtml]="item.answer">
+              </p>
+              <button class="card-close-btn" (click)="backSide = false">
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="19.9453" y="7.57117" width="17.5" height="2.5" transform="rotate(135 19.9453 7.57117)" fill="#000"/>
+                  <rect x="7.57031" y="5.80304" width="17.5" height="2.5" transform="rotate(45 7.57031 5.80304)" fill="#000"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>

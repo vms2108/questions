@@ -1,0 +1,29 @@
+<input matInput class="mat-select-search-input mat-select-search-hidden" [style.width]="width + 'px'"/>
+
+<div
+  class="mat-select-search-inner"
+  [ngClass]="{'mat-select-search-inner-multiple': matSelect.multiple}"
+  [style.min-width]="width + 'px'"
+>
+  <input
+    #searchSelectInput
+    class="input"
+    autocomplete="off"
+    (keydown)="handleKeydown($event)"
+    (input)="onInputChange($event.target.value)"
+    (blur)="onBlur($event.target.value)"
+    [placeholder]="placeholderLabel"
+  />
+  <button
+    *ngIf="value"
+    class="ik-link link"
+    (click)="reset(true)"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="noEntriesFoundLabel && value && options?.length === 0"
+     class="mat-select-search-no-entries-found">
+  {{ noEntriesFoundLabel }}
+</div>

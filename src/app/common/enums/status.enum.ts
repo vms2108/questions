@@ -1,0 +1,5 @@
+export enum StatusEnum {
+  NOT_VERIFIED = 'NOT_VERIFIED',
+  CORRECT = 'CORRECT',
+  INCORRECT = 'INCORRECT',
+}

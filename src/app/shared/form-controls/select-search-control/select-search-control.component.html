@@ -1,0 +1,25 @@
+<div
+  class="field"
+  [style.width]="width + 'px'">
+  <mat-select
+    matInput
+    [formControl]="control"
+    [placeholder]="placeholder"
+    [multiple]="multiple"
+  > 
+    <ik-search-control
+      [formControl]="searchControl"
+      [width]="width"
+      (searchChange)="searchChange.emit($event)"
+    ></ik-search-control>
+      <mat-option
+        *ngFor="let item of filteredItems | async"
+        [value]="item"
+      >
+        {{ item }}
+      </mat-option>
+      <mat-option *ngIf="!visibleOptions" class="default-option" [disabled]="true">
+        {{ defaultOptionText }}
+      </mat-option>
+  </mat-select>
+</div>

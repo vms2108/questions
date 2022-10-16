@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash"
+           ],
             "outputPath": "dist/questions",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -123,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "questions"
+    }
+  },
+  "defaultProject": "questions",
+  "cli": {
+    "analytics": "fbbba389-6e41-4275-98c5-54e8a09cb3e3"
+  }
 }
