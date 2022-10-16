@@ -1,0 +1,15 @@
+.mat-stepper-horizontal {
+  &.mat-stepper-horizontal-without-padding {
+    $header-height: 72px;
+
+    height: 100%;
+
+    .mat-horizontal-stepper-header-container {
+      height: $header-height;
+    }
+
+    .mat-horizontal-content-container {
+      padding: 0;
+    }
+  }
+}

@@ -66,7 +66,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.filteredList = this.QUESTIONS_LIST.filter(item => {
       return (item.status === status || status === 'ALL') &&
         (item.complexity === complexity || complexity === 'ALL') &&
-        (item.section === complexity || section === 'ALL');
+        (item.section === section || section === 'ALL');
     });
   }
 

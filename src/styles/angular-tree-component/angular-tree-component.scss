@@ -1,0 +1,18 @@
+@import '~angular-tree-component/dist/angular-tree-component.css';
+
+.angular-tree-component {
+  .tree-children {
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 13px;
+      border-left: 1px dashed #dedede;
+    }
+  }
+}

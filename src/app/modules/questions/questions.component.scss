@@ -12,6 +12,11 @@
   min-width: 320px;
 }
 
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 @media screen and (min-width: 700px) {
   .item {
     min-width: 500px;
