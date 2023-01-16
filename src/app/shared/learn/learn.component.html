@@ -1,0 +1,31 @@
+
+<div *ngIf="selectedItem" class="container">
+  <div class="question">
+    {{ selectedItem.title }}
+  </div>
+  <button class="link" (click)="showAnswer = !showAnswer">
+    Ответ
+  </button>
+  <div *ngIf="showAnswer" class="info">
+    <div *ngFor="let block of selectedItem.blocks" class="block">
+      <ng-container [ngSwitch]="block.type">
+        <ng-container *ngSwitchCase="'text'">
+          <div class="text" [innerHtml]="block.text">
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'code'">
+          <pre class="json">
+            <code class="code" [highlight]=" block.text">
+            </code>
+          </pre>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+        
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+  <div class="btn" (click)="nextRandom()">
+    Следующий
+  </div>
+</div>

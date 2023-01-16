@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { API_URL_GATEWAY } from './api-service.config';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   imports: [
@@ -16,7 +18,12 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent
   ],
-  providers: [],
+  providers: [
+    {
+      provide: API_URL_GATEWAY,
+      useValue: environment.gateway,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

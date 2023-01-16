@@ -1,0 +1,8 @@
+<form class="form" [formGroup]="form">
+  <app-text-control formControlName="title" label="Вопрос"></app-text-control>
+  <app-question-blocks-control formControlName="blocks" label="Блоки"></app-question-blocks-control>
+  <app-questions-filter-control formControlName="status" label="Статус" [list]="statusesList"></app-questions-filter-control>
+  <app-questions-filter-control formControlName="complexity" label="Сложность" [list]="complexityList"></app-questions-filter-control>
+  <app-questions-filter-control formControlName="section" label="Секция" [list]="sectionsList"></app-questions-filter-control>
+  <app-number-control formControlName="counter" label="Количество повторений"></app-number-control>
+</form>

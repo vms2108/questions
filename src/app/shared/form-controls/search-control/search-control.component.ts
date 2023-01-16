@@ -24,7 +24,7 @@ import { take, takeUntil } from 'rxjs/operators';
 import { ChangeEventFn, defaultChangeEventFn, defaultTouchEventFn, TouchEventFn } from './../../control-base/helpers/control-value-accessor.defaults';
 
 @Component({
-  selector: 'ik-search-control',
+  selector: 'app-search-control',
   templateUrl: './search-control.component.html',
   styleUrls: ['./search-control.component.scss'],
   providers: [
@@ -59,7 +59,7 @@ export class SearchControlComponent implements OnInit, OnDestroy {
 
   public onTouched: TouchEventFn =  defaultTouchEventFn;
 
-  protected readonly validatorKey = 'ik-search-control';
+  protected readonly validatorKey = 'app-search-control';
 
   private previousSelectedValues!: any[];
 

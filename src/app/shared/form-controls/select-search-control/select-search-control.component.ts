@@ -13,10 +13,10 @@ import {
 import { FormBuilder, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { SimpleFormControlBaseComponent } from 'src/app/ui/control-base/simple-form-control.base-component';
+import { SimpleFormControlBaseComponent } from 'src/app/shared/control-base/simple-form-control.base-component';
 
 @Component({
-  selector: 'ik-select-search-control',
+  selector: 'app-select-search-control',
   templateUrl: './select-search-control.component.html',
   styleUrls: ['./select-search-control.component.scss'],
   providers: [
@@ -61,7 +61,7 @@ export class SelectSearchControlComponent
 
   public visibleOptions = true;
 
-  protected readonly validatorKey = 'ik-select-search-control';
+  protected readonly validatorKey = 'app-select-search-control';
 
   private subject = new Subject<void>();
 

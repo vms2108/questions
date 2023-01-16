@@ -1,13 +1,5 @@
-<div>
-  <mat-select
-    [formControl]="control"
-    [placeholder]="placeholder"
-  >
-    <mat-option
-      *ngFor="let option of options"
-      [value]="option.value"
-    >
-      <ng-container [ngTemplateOutlet]="option.templateRef"></ng-container>
-    </mat-option>
-  </mat-select>
+<div #el class="custom-select" appSelect [label]="label" (setValue)="setValue($event)">
+  <select #select [formControl]="control">
+    <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+  </select>
 </div>

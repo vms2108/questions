@@ -23,9 +23,12 @@ import { SimpleFormControlBaseComponent } from 'src/app/shared/control-base/simp
 export class QuestionsFilterControlComponent extends SimpleFormControlBaseComponent<string, string> {
 
   @Input()
+  public label!: string;
+
+  @Input()
   public readonly list!: string;
 
-  protected readonly validatorKey = 'ik-questions-filter-control';
+  protected readonly validatorKey = 'app-questions-filter-control';
 
   constructor(
     formBuilder: FormBuilder,

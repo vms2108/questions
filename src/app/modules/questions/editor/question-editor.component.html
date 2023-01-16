@@ -1,0 +1,31 @@
+<header>
+  <h3>
+    {{ isCopy ? 'Копировать' : question ? 'Редактировать' : 'Создать' }}
+    вопрос
+  </h3>
+</header>
+
+<section>
+  <div class="flex">
+    <form
+      class="form"
+      [formGroup]="form"
+    >
+      <app-question-parameters-control formControlName="parameters"></app-question-parameters-control>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <button
+    *ngIf="form"
+    class="btn"
+    [disabled]="form.invalid || loading || form.value.locked"
+
+    (click)="apply()"
+  >
+    Сохранить
+  </button>
+</footer>
+
+<app-loader-with-backdrop *ngIf="loading"></app-loader-with-backdrop>

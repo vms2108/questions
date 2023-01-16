@@ -1,23 +1,17 @@
 import {
-  AfterContentInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ContentChildren,
+  ElementRef,
   forwardRef,
   Input,
-  OnDestroy,
-  QueryList,
+  ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subscription } from 'rxjs';
-
-import { SimpleFormControlBaseComponent } from '../../control-base/simple-form-control.base-component';
-
-import { OptionComponent } from './option/option.component';
+import { SimpleFormControlBaseComponent } from 'src/app/shared/control-base/simple-form-control.base-component';
 
 @Component({
-  selector: 'ik-select-control',
+  selector: 'app-select-control',
   templateUrl: './select-control.component.html',
   styleUrls: ['./select-control.component.scss'],
   providers: [
@@ -34,19 +28,21 @@ import { OptionComponent } from './option/option.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectControlComponent<T = any> extends SimpleFormControlBaseComponent<T, T> implements AfterContentInit, OnDestroy {
+export class SelectControlComponent<T = any> extends SimpleFormControlBaseComponent<T, T> {
 
   @Input()
-  public placeholder: string | null = null;
+  public label: string | null = null;
 
-  @ContentChildren(OptionComponent)
-  public optionsList!: QueryList<OptionComponent>;
+  @Input()
+  public options: string[] = [];
 
-  public options: OptionComponent[] = [];
+  @ViewChild('el', { static: true })
+  public el!: ElementRef;
 
-  protected readonly validatorKey = 'ik-select-control';
+  @ViewChild('select', { static: true })
+  public select!: ElementRef;
 
-  private optionsChangeSubscription: Subscription | null = null;
+  protected readonly validatorKey = 'app-select-control';
 
   constructor(
     formBuilder: FormBuilder,
@@ -55,13 +51,8 @@ export class SelectControlComponent<T = any> extends SimpleFormControlBaseCompon
     super(formBuilder, changeDetectorRef);
   }
 
-  public ngAfterContentInit(): void {
-    this.optionsUnsubscribe();
-
-    this.optionsChangeSubscription = this.optionsList
-      .changes
-      .subscribe(() => this.refreshOptions());
-    this.refreshOptions();
+  public setValue(value: string): void {
+    this.control.setValue(value);
   }
 
   public createControl(): FormControl {
@@ -73,19 +64,11 @@ export class SelectControlComponent<T = any> extends SimpleFormControlBaseCompon
   }
 
   public createInputDataFromValue(value: T | null): T | null {
-    return value;
-  }
-
-  private optionsUnsubscribe(): void {
-    if (this.optionsChangeSubscription) {
-      this.optionsChangeSubscription.unsubscribe();
-      this.optionsChangeSubscription = null;
+    if (this.el.nativeElement) {
+      this.select.nativeElement.value = value;
+      this.el.nativeElement.dispatchEvent(new Event('change'));
     }
-  }
-
-  private refreshOptions(): void {
-    this.options = this.optionsList.toArray();
-    this.changeDetectorRef.markForCheck();
+    return value;
   }
 
 }

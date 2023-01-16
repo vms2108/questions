@@ -1,0 +1,15 @@
+<div class="label">
+  Блоки
+</div>
+<app-array-control
+  [formControl]="control"
+  [initialItemValue]="initialItemValue"
+  [minSize]="0"
+>
+  <ng-template
+    #itemControl
+    let-itemFormControl="itemFormControl"
+  >
+    <app-question-block-control [formControl]="itemFormControl"></app-question-block-control>
+  </ng-template>
+</app-array-control>

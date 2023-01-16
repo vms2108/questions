@@ -1,0 +1,23 @@
+@import 'src/app/shared/styles/colors.scss';
+
+.app-link {
+  color: $green-color;
+  cursor: pointer;
+  background: none;
+
+  &--red {
+    color: $red-color;
+  }
+
+  &:hover {
+    color: $orange-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  svg {
+    width: 25px;
+  }
+}

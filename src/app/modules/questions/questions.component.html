@@ -4,9 +4,110 @@
     <app-questions-filter-control formControlName="complexity" label="Сложность" [list]="complexityList"></app-questions-filter-control>
     <app-questions-filter-control formControlName="section" label="Секция" [list]="sectionsList"></app-questions-filter-control>
   </form>
-  <div class="container">
-    <div *ngFor="let item of filteredList" class="item">
-      <app-card [item]="item"></app-card>
-    </div>
+  <div class="filters">
+    <button class="btn" (click)="selectQuestion(null)">Создать вопрос</button>
+    <button class="btn" (click)="learnMode=true">Режим обучения</button>
   </div>
+  <table class="table">
+    <thead>
+      <th>
+        #
+      </th>
+      <th *ngFor="let column of displayedColumns">
+        <div class="th">
+          {{ column.label }}
+        </div>
+      </th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filteredList; index as i" (dblclick)="selectForLearn(item)" [class.locked]="item.locked">
+        <td>
+          {{ i + 1 }}
+        </td>
+        <td *ngFor="let column of displayedColumns; index as j"
+          >
+          <ng-container [ngSwitch]="column.id">
+            <ng-container *ngSwitchCase="'title'">
+              <div class="cell">{{ item.parameters.title }}</div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'complexity'">
+              <div class="cell">{{ item.parameters.complexity }}</div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'section'">
+              <div class="cell">{{ item.parameters.section }}</div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'status'">
+              <div class="cell">{{ item.parameters.status }}</div>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              <div class="cell">{{ item[column.id] }}</div>
+            </ng-container>
+          </ng-container>
+        </td>
+        <td>
+          <button class="app-link" (click)="deleteQuestion(item)">
+            <app-tooltip message="Delete">
+              <mat-icon>delete</mat-icon>
+            </app-tooltip>
+          </button>
+          <button class="app-link" (click)="selectQuestion(item)">
+            <app-tooltip message="Edit">
+              <mat-icon>edit</mat-icon>
+            </app-tooltip>
+          </button>
+          <button
+            class="app-link"
+            (click)="selectQuestion(item, true)"
+          >
+            <app-tooltip message="Duplicate">
+              <mat-icon>content_copy</mat-icon>
+            </app-tooltip>
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
+<ng-container *ngIf="visibleEditor">
+  <div class="overlay" (click)="closeEditor()"></div>
+  <div class="content">
+    <div class="editor">
+      <app-question-editor
+        [isCopy]="isCopy"
+        [question]="selectedItem"
+        (questionChanged)="upsertQuestion($event)"
+        (closeEditor)="closeEditor()"
+      >
+      </app-question-editor>
+    </div>
+    <a
+        class="app-link"
+        (click)="closeEditor()"
+      >
+        <mat-icon>clear</mat-icon>
+      </a>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="learnMode">
+  <div class="overlay" (click)="learnMode = false"></div>
+  <div class="content">
+    <div class="editor">
+      <app-learn
+        [list]="filteredList"
+      >
+      </app-learn>
+    </div>
+    <a
+        class="app-link"
+        (click)="learnMode = false"
+      >
+        <mat-icon>clear</mat-icon>
+      </a>
+  </div>
+</ng-container>
+
+<app-notification></app-notification>

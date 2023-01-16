@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'ik-option',
+  selector: 'app-option',
   templateUrl: './option.component.html',
   styleUrls: ['./option.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

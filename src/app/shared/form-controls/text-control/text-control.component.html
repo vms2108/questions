@@ -1,0 +1,4 @@
+<div class="name-input">
+  <input #input class="input" type="text" autocomplete="off" appInput [formControl]="control" [maxlength]="maxLength" >
+  <label class="label" (click)="input.focus()">{{ label }}</label>
+</div>

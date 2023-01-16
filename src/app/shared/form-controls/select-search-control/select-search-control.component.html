@@ -7,11 +7,11 @@
     [placeholder]="placeholder"
     [multiple]="multiple"
   > 
-    <ik-search-control
+    <app-search-control
       [formControl]="searchControl"
       [width]="width"
       (searchChange)="searchChange.emit($event)"
-    ></ik-search-control>
+    ></app-search-control>
       <mat-option
         *ngFor="let item of filteredItems | async"
         [value]="item"
