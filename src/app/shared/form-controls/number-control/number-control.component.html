@@ -1,4 +1,4 @@
 <div class="name-input">
-  <input #input class="input" type="number" autocomplete="off" [formControl]="control">
+  <input #input class="input" type="number" autocomplete="off" appInput [formControl]="control">
   <label class="label" (click)="input.focus()">{{ label }}</label>
 </div>

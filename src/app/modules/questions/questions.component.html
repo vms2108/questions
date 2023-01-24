@@ -93,7 +93,7 @@
 </ng-container>
 
 <ng-container *ngIf="learnMode">
-  <div class="overlay" (click)="learnMode = false"></div>
+  <div class="overlay" (click)="closeLearn()"></div>
   <div class="content">
     <div class="editor">
       <app-learn
@@ -103,7 +103,7 @@
     </div>
     <a
         class="app-link"
-        (click)="learnMode = false"
+        (click)="closeLearn()"
       >
         <mat-icon>clear</mat-icon>
       </a>

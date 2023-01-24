@@ -1,5 +1,4 @@
 import { map, takeUntil } from 'rxjs/operators';
-import { QUESTIONS } from './common/constants/questions';
 import { Component, OnDestroy, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -82,6 +81,11 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.filteredList = [item];
     this.learnMode = true;
     this.changeDetectorRef.markForCheck();
+  }
+
+  public closeLearn(): void {
+    this.learnMode = false;
+    this.filterList();
   }
 
   public selectQuestion(item: QuestionFull | null, isCopy = false): void {
